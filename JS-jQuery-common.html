@@ -1,0 +1,203 @@
+    //判断用户是否为手机端
+    <script>
+        var browser = {
+            versions: function () {
+                var u = navigator.userAgent,
+                    app = navigator.appVersion;
+                var sUserAgent = navigator.userAgent;
+                return {
+                    trident: u.indexOf('Trident') > -1, //IE内核
+                    presto: u.indexOf('Presto') > -1, //opera内核
+                    isChrome: u.indexOf("chrome") > -1, //是否谷为歌浏览器
+                    isSafari: !u.indexOf("chrome") > -1 && (/webkit|khtml/).test(u),
+                    isSafari3: !u.indexOf("chrome") > -1 && (/webkit|khtml/).test(u) && u.indexOf('webkit/5') !=
+                        -1,
+                    webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                    mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+                    iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, //是否iPad
+                    iWinPhone: u.indexOf('Windows Phone') > -1 //是否为winphone
+                };
+            }()
+        }
+
+        if (browser.versions.mobile || browser.versions.iWinPhone) {
+            window.location = "https:/m.baidu.com";
+        } else {
+            window.location = "https:/www.baidu.com";
+
+        }
+    </script>
+
+
+
+    //html代码，用js动态加载进页面
+    <script type="text/html" id="T-pcList">
+        <div class="new">
+            新的
+        </div>
+    </script>
+
+    <script>
+        $(function () {
+            var s = $("#T-pcList").html(); //获得js的html内容
+            $(".fa").html(s); //把s的内容放到class为bd内
+            //  thisstyle(); //执行某个函数
+        });
+    </script>
+
+
+
+    //jquery对文本框只读状态与可读状态的相互转化
+    <Script>
+        $('input').removeAttr('Readonly');
+        $('input').attr('Readonly', 'true');
+    </Script>
+
+
+
+    //清除空格
+    <script>
+        //  str.replace(/\s*/g, "");                  //去除字符串内所有的空格
+        //  str1.replace(/^\s*|\s*$/g, "");      //去除字符串内两头的空格
+        //  str2.replace(/^\s*/, "");                //去除字符串内左侧的空格
+        //  str3.replace(/(\s*$)/g, "");            //去除字符串内右侧的空格
+        var olddata = "         我搜搜   说的上档次吃 sds XDSSD 12fd 11 1 1  ";
+        var newdata = olddata.replace(/\s/g, "-");
+    </script>
+
+
+
+    //保留后端传过来的空格
+    <script>
+        var objt = {
+            name: ' aaaa 这是一个空格多的标签 这是一个空格多的标签'
+        }
+        objt.name = objt.name.replace(/\s/g, '&nbsp;');
+        console.log(objt.name);
+    </script>
+
+
+
+    //创建一个具有唯一值的新数组 有es6
+    <script>
+        var entries = [1, 2, 2, 3, 4, 5, 6, 6, 7, 7, 8, 4, 2, 1]
+        var unique_entries = [...new Set(entries)];
+        console.log(unique_entries);
+    </script>
+
+
+    //数字格式转字符串
+    <script>
+        var converted_number = 5 + "";
+    </script>
+
+
+    //将字符串转换为数字
+    <script>
+        the_string = "123";
+        console.log(+the_string); //请注意它仅适用于“字符串数字”。
+    </script>
+
+
+
+    //展平二维数组
+    <script>
+        var entries = [1, [5, 3],
+            [6, 7], 9
+        ];
+
+        var flat_entries = [].concat(...entries);
+
+        //  console.log(...entries);    //... s三点返回数组中的各项
+
+
+        //    console.log(flat_entries);
+    </script>
+
+
+
+    //缩短条件语句
+    <script>
+        if (available) {
+            addToCart();
+        }
+        //   通过简单地使用变量和函数来缩短它：
+
+        available && addToCart()
+    </script>
+
+
+    <script>
+        //使用 length 调整/清空数组
+        var entries = [1, 2, 3, 4, 5, 6, 7];
+        console.log(entries.length); // 7  
+
+        entries.length = 4;
+        console.log(entries.length); // 4  
+        console.log(entries); // [1, 2, 3, 4]
+
+        //如果我们要清空数组：
+        var entries = [1, 2, 3, 4, 5, 6, 7];
+        console.log(entries.length); // 7  
+
+        entries.length = 0;
+        console.log(entries.length); // 0 
+        console.log(entries); // []
+    </script>
+
+
+
+    //获取当前时间
+    <div id="dateSpan"></div>
+
+    <script>
+        var calculateDate = function () {
+
+            var date = new Date();
+
+            var weeks = ["日", "一", "二", "三", "四", "五", "六"];
+
+            return date.getFullYear() + "年" + (date.getMonth() + 1) + "月" +
+
+                date.getDate() + "日 星期" + weeks[date.getDay()];
+
+        }
+
+        $(function () {
+
+            $("#dateSpan").html(calculateDate());
+
+        })
+    </script>
+
+
+    //获取某年某月的哪些天是周六和周日
+    <p id="text"></p>
+
+    <script type="text/javascript">
+        function time(y, m) {
+            var tempTime = new Date(y, m, 0);
+            var time = new Date();
+            var saturday = new Array();
+            var sunday = new Array();
+            for (var i = 1; i <= tempTime.getDate(); i++) {
+                time.setFullYear(y, m - 1, i);
+                var day = time.getDay();
+                if (day == 6) {
+                    saturday.push(i);
+                } else if (day == 0) {
+                    sunday.push(i);
+                }
+            }
+            var text = y + "年" + m + "月份" + "<br />" +
+                "周六：" + saturday.toString() + "<br />" +
+                "周日：" + sunday.toString();
+            document.getElementById("text").innerHTML = text;
+        }
+
+        time(2014, 9);
+    </script>
